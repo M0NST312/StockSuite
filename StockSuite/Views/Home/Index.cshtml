@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    var settings = {
+  "url": "https://sandbox.momodeveloper.mtn.com/v1_0/apiuser",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+    "X-Reference-Id": "d898338a-0a88-40cd-953c-6697595c88e1",
+    "Ocp-Apim-Subscription-Key": "a03b98ba8a6e4242a2ece03f4f3bb9b9",
+    //"Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSMjU2In0.eyJjbGllbnRJZCI6IjM3ZDE3MTkyLWUyYWEtNGU4Mi1hYzFjLWYzMTg5NGU3YTBiYyIsImV4cGlyZXMiOiIyMDIyLTA5LTEwVDEyOjU0OjU0LjI2MSIsInNlc3Npb25JZCI6IjIwYWRlODNhLTUxMjUtNGNhYS1hZTE0LWM4MThiYzM0Y2ZjMiJ9.Dd5Bx4XlwwUjDCCAf_c9oLZfXi_8NKWGjl7i6eIlK581RlreUJ2QXCI53AbkZ6xpnlbG_400Ia0Y4eTBy4SVZJ6FLu20jOE_zKPybVKDi_gInkA1MD7XgjfPaFtR_gtMXQJSnNnjZeZ6_tOTzUATeUnEgzv1cQIbEqv8oJEPA205szVSJTef2vF7yeAhxwp7NAUhKVvviWHY0agEEetY0KAf1sQmSq99t78ZboMgR-3J2wFBPlUbk-qa-DKoFpGT7mLHeYaadJ1ASXQABbzVfu3gqT_BeFcWwmFywKwdZkwxL8bhe5NmHMDCz6PnPxFpVBHg2gdsFtJYxEPays_00g",
+    "Content-Type": "application/json"
+  },
+  "data": JSON.stringify({
+    "providerCallbackHost": "https://webhook.site/500c4315-42fa-4093-b7df-377d858c01ed"
+  }),
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+</script>
