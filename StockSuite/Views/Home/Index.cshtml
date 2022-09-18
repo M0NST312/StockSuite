@@ -1,29 +1,199 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
+@model IEnumerable<StockSuite.Models.UserDetails>
 
+@{
+    ViewData["Title"] = "Home Page";
+    //StockSuite.Models.UserDetails user = (StockSuite.Models.UserDetails)ViewBag.User;
+}
+ <link rel="stylesheet" href="~/lib/admin-lte/css/adminlte.css" />
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script>
-    var settings = {
-  "url": "https://sandbox.momodeveloper.mtn.com/v1_0/apiuser",
-  "method": "POST",
-  "timeout": 0,
-  "headers": {
-    "X-Reference-Id": "d898338a-0a88-40cd-953c-6697595c88e1",
-    "Ocp-Apim-Subscription-Key": "a03b98ba8a6e4242a2ece03f4f3bb9b9",
-    //"Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSMjU2In0.eyJjbGllbnRJZCI6IjM3ZDE3MTkyLWUyYWEtNGU4Mi1hYzFjLWYzMTg5NGU3YTBiYyIsImV4cGlyZXMiOiIyMDIyLTA5LTEwVDEyOjU0OjU0LjI2MSIsInNlc3Npb25JZCI6IjIwYWRlODNhLTUxMjUtNGNhYS1hZTE0LWM4MThiYzM0Y2ZjMiJ9.Dd5Bx4XlwwUjDCCAf_c9oLZfXi_8NKWGjl7i6eIlK581RlreUJ2QXCI53AbkZ6xpnlbG_400Ia0Y4eTBy4SVZJ6FLu20jOE_zKPybVKDi_gInkA1MD7XgjfPaFtR_gtMXQJSnNnjZeZ6_tOTzUATeUnEgzv1cQIbEqv8oJEPA205szVSJTef2vF7yeAhxwp7NAUhKVvviWHY0agEEetY0KAf1sQmSq99t78ZboMgR-3J2wFBPlUbk-qa-DKoFpGT7mLHeYaadJ1ASXQABbzVfu3gqT_BeFcWwmFywKwdZkwxL8bhe5NmHMDCz6PnPxFpVBHg2gdsFtJYxEPays_00g",
-    "Content-Type": "application/json"
-  },
-  "data": JSON.stringify({
-    "providerCallbackHost": "https://webhook.site/500c4315-42fa-4093-b7df-377d858c01ed"
-  }),
-};
+    <br />
+   @* <a asp-controller="UserDetails" asp-action="Pay" asp-route-item="Subscription">Button</a>*@
+    <!---USER INFO-->
+    <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>@ViewData["Subs"]<sup style="font-size: 20px">SZL</sup></h3>
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-</script>
+                <p>Total Subscriptions Paid</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a class="small-box-footer" asp-controller="UserDetails" asp-action="PaymentRequest" >Pay <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>@ViewData["Savings"]<sup style="font-size: 20px">SZL</sup></h3>
+
+                <p>Savings</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a asp-controller="UserDetails" asp-action="SavingsRequest"  class="small-box-footer">Pay <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>@ViewData["Quick"]<sup style="font-size: 20px">SZL</sup></h3>
+
+                <p>Available Quick Loan</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a asp-controller="UserDetails" asp-action="LoanRequest"  class="small-box-footer">Get Loan<i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>@ViewData["Loan"]<sup style="font-size: 20px">SZL</sup></h3>
+
+                <p> Loan</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Transactions</h3>
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Type</th> 
+                      <th>Reference</th>
+                      <th>Amount</th>                     
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                           @* @if (user.Transactions.Count > 0)
+                            {
+                                
+                                foreach (var item in user.Transactions)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.Display(item.CreatedDate.ToString())
+                                        </td>
+                                        <td>
+                                            @Html.Display(item.Type.ToString())
+                                        </td>
+                                        <td>
+                                            @Html.Display(item.Reference.ToString())
+                                        </td>
+                                        <td>
+                                            @Html.Display(item.Amount.ToString())
+                                        </td>
+
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }*@
+                        </tbody>
+                   @* <tr>
+                      <td>183</td>
+                      <td>John Doe</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-success">Approved</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    </tr>
+                    <tr>
+                      <td>219</td>
+                      <td>Alexander Pierce</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-warning">Pending</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    </tr>
+                    <tr>
+                      <td>657</td>
+                      <td>Bob Doe</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-primary">Approved</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    </tr>
+                    <tr>
+                      <td>175</td>
+                      <td>Mike Doe</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-danger">Denied</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    </tr>
+                    <tr>
+                      <td>134</td>
+                      <td>Jim Doe</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-success">Approved</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    </tr>
+                    <tr>
+                      <td>494</td>
+                      <td>Victoria Doe</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-warning">Pending</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    </tr>
+                    <tr>
+                      <td>832</td>
+                      <td>Michael Doe</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-primary">Approved</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    </tr>
+                    <tr>
+                      <td>982</td>
+                      <td>Rocky Doe</td>
+                      <td>11-7-2014</td>
+                      <td><span class="tag tag-danger">Denied</span></td>
+                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                    </tr>*@
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+</div>
+<script src="~/lib/admin-lte/js/adminlte.js"></script>

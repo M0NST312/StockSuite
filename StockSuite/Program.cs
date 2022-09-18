@@ -1,7 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using StockSuite.SSContext;
+using Microsoft.AspNetCore.Identity;
+using StockSuite.Data;
+
+
 var builder = WebApplication.CreateBuilder(args);
+var ssContextConnection = builder.Configuration.GetConnectionString("SSContext");
+var identityContext = builder.Configuration.GetConnectionString("StockSuiteContextConnection");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<SSDBContext>(options => options.UseSqlServer(ssContextConnection));
+builder.Services.AddDbContext<StockSuiteContext>(options => options.UseSqlServer(identityContext));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<StockSuiteContext>();
+
 
 var app = builder.Build();
 
@@ -17,6 +31,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 

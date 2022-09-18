@@ -31,7 +31,7 @@ namespace StockSuite.MomoAPI
             //tkn = access_token.access_token.ToString();
         }
 
-        public async void SendPayRequest()
+        public async Task<RequestToPayAttributes> SendPayRequest(string note)
         {
             var client = new HttpClient();
             var queryString = HttpUtility.ParseQueryString(string.Empty);
@@ -63,7 +63,7 @@ namespace StockSuite.MomoAPI
                 externalId = "1234567",
                 payer = new Payer{ partyIdType = "MSISDN", partyId = "1278431618" },
                 payerMessage = "Test Message",
-                payeeNote = "Test"
+                payeeNote = note
             };
 
             var body = JsonConvert.SerializeObject(payload);
@@ -87,7 +87,29 @@ namespace StockSuite.MomoAPI
                 response = await client.PostAsync(uri, content);
                 var error = response.Content.ReadAsStringAsync().Result;
             }
+            string requestToPayStatusString = await RequestToPayStatus(uuid);
+            RequestToPayAttributes requestStatus = JsonConvert.DeserializeObject<RequestToPayAttributes>(requestToPayStatusString);
 
+            return requestStatus;
+        }
+
+
+        public async Task<string> RequestToPayStatus(string uuid)
+        {
+            var client = new HttpClient();
+            var queryString = HttpUtility.ParseQueryString(string.Empty);
+
+            // Request headers
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + access_token.access_token.ToString());
+            client.DefaultRequestHeaders.Add("X-Target-Environment", "sandbox");
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "fb58b243f3fb48108dccf84eb993d516");
+
+            var uri = "https://sandbox.momodeveloper.mtn.com/collection/v1_0/requesttopay/" + uuid + "?"+ queryString;
+
+            var response = await client.GetAsync(uri);
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            return responseBody;
         }
         //public async Task<string> CreateToken()
         //{

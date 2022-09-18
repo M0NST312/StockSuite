@@ -1,6 +1,10 @@
 ﻿#nullable enable
+
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace StockSuite.Models
 {
+    [NotMapped]
     public class Account
     {
         public int Id { get; set; }
