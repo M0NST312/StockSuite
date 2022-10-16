@@ -6,6 +6,6 @@ A web platform for managing Co-op accounts. It seeks to provide the following so
 4. Availability of quick loan option without a need to apply
 
 Tools
-* ASP.Net 6 C# MVC
-* SQL Server
-* MTN Momo API (Payments)
+* _ASP.Net 6 C# MVC_
+* _SQL Server_
+* _MTN Momo API (Payments)_
