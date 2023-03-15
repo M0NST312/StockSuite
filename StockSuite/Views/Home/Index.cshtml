@@ -6,75 +6,78 @@
     //StockSuite.Models.UserDetails user = (StockSuite.Models.UserDetails)ViewBag.User;
 }
  <link rel="stylesheet" href="~/lib/admin-lte/css/adminlte.css" />
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <br />
-   @* <a asp-controller="UserDetails" asp-action="Pay" asp-route-item="Subscription">Button</a>*@
-    <!---USER INFO-->
-    <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        @* <a asp-controller="UserDetails" asp-action="Pay" asp-route-item="Subscription">Button</a>*@
+        <!---USER INFO-->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
             <div class="small-box bg-info">
-              <div class="inner">
-                <h3>@ViewData["Subs"]<sup style="font-size: 20px">SZL</sup></h3>
+                    <div class="inner">
+                        <h3>@ViewData["Subs"]<sup style="font-size: 20px">SZL</sup></h3>
 
-                <p>Total Subscriptions Paid</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a class="small-box-footer" asp-controller="UserDetails" asp-action="PaymentRequest" >Pay <i class="fas fa-arrow-circle-right"></i></a>
+                        <p>Total Subscriptions Paid</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a class="small-box-footer" asp-controller="UserDetails" asp-action="PaymentRequest" >Pay <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
             </div>
-          </div>
-          <!-- ./col -->
+            <!-- ./col -->
           <div class="col-lg-3 col-6">
-            <!-- small box -->
+                <!-- small box -->
             <div class="small-box bg-success">
-              <div class="inner">
-                <h3>@ViewData["Savings"]<sup style="font-size: 20px">SZL</sup></h3>
+                    <div class="inner">
+                        <h3>@ViewData["Savings"]<sup style="font-size: 20px">SZL</sup></h3>
 
-                <p>Savings</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a asp-controller="UserDetails" asp-action="SavingsRequest"  class="small-box-footer">Pay <i class="fas fa-arrow-circle-right"></i></a>
+                        <p>Savings</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a asp-controller="UserDetails" asp-action="SavingsRequest"  class="small-box-footer">Pay <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
             </div>
-          </div>
-          <!-- ./col -->
+            <!-- ./col -->
           <div class="col-lg-3 col-6">
-            <!-- small box -->
+                <!-- small box -->
             <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>@ViewData["Quick"]<sup style="font-size: 20px">SZL</sup></h3>
+                    <div class="inner">
+                        <h3>@ViewData["Quick"]<sup style="font-size: 20px">SZL</sup></h3>
 
-                <p>Available Quick Loan</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a asp-controller="UserDetails" asp-action="LoanRequest"  class="small-box-footer">Get Loan<i class="fas fa-arrow-circle-right"></i></a>
+                        <p>Available Quick Loan</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a asp-controller="UserDetails" asp-action="LoanRequest"  class="small-box-footer">Get Loan<i class="fas fa-arrow-circle-right"></i></a>
+                </div>
             </div>
-          </div>
-          <!-- ./col -->
+            <!-- ./col -->
           <div class="col-lg-3 col-6">
-            <!-- small box -->
+                <!-- small box -->
             <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>@ViewData["Loan"]<sup style="font-size: 20px">SZL</sup></h3>
+                    <div class="inner">
+                        <h3>@ViewData["Loan"]<sup style="font-size: 20px">SZL</sup></h3>
 
-                <p> Loan</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <p> Loan</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
             </div>
-          </div>
-          <!-- ./col -->
+            <!-- ./col -->
         </div>
         <div class="row">
-          <div class="col-12">
+            <div class="col-12">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Transactions</h3>
@@ -186,8 +189,8 @@
                       <td>11-7-2014</td>
                       <td><span class="tag tag-danger">Denied</span></td>
                       <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>*@
-                  </tbody>
+                    </tr>
+                  </tbody>*@
                 </table>
               </div>
               <!-- /.card-body -->
@@ -195,5 +198,8 @@
             <!-- /.card -->
           </div>
         </div>
+        }else{
+
+        }
 </div>
 <script src="~/lib/admin-lte/js/adminlte.js"></script>

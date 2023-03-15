@@ -1,4 +1,8 @@
 ﻿<!DOCTYPE html>
+
+@if (User.Identity.IsAuthenticated)
+{   
+
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -215,7 +219,42 @@
                   <p>Transactions</p>
                 </a>
               </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                DAO
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a  asp-controller="UserDetails" asp-action="Details" asp-route-id="3"  class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Reports</p>
+                </a>
+              </li>
               
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a  asp-controller="UserDetails" asp-action="Details" asp-route-id="3"  class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Proposals</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+                 
+          <li class="nav-item">
+                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button id="logout" type="submit" class="nav-link btn btn-success text-light">Logout</button>
+                </form>
+            </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -297,13 +336,12 @@
 <!-- AdminLTE App -->
 <script src="~/lib/admin-lte/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
-@*<script src="~/lib/admin-lte/js/demo.js"></script>*@
+<script src="~/lib/admin-lte/js/demo.js"></script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+} else{
 
-
-@*<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -334,6 +372,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="UserDetails" asp-action="Index">Details</a>
                         </li>
                     </ul>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
@@ -354,4 +393,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-</html>*@
+</html>
+}
