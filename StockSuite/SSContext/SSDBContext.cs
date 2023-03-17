@@ -14,5 +14,7 @@ namespace StockSuite.SSContext
         }
         public DbSet<UserDetails> UserDetails { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+        public DbSet<Proposal> Proposals { get; set; }
     }
 }

@@ -1,0 +1,67 @@
+﻿@model List<StockSuite.Models.Proposal>
+@{
+    ViewData["Title"] = "Proposals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card-deck"
+    <div class="card">
+            @*<img class="card-img-top" src="" alt="@card.Title">*@
+            <div class="card-body">
+                <h1 class="card-title">Proposal 1</h1>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus malesuada quam, id hendrerit est ultricies non. Donec varius quam et vestibulum malesuada. Fusce in velit sapien.......</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="card-text"><strong>Votes:</strong> 34</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p class="card-text"><strong>End Date:</strong> @DateTime.Now</p>
+                        <p class="card-text"><strong>Status:</strong> Closed </p>
+                    </div>
+                </div>
+                <a href="" class="btn btn-primary">See More...</a>
+            </div>
+        </div>
+        <div class="card">
+            @*<img class="card-img-top" src="" alt="@card.Title">*@
+            <div class="card-body">
+                <h1 class="card-title">Proposal 2</h1>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus malesuada quam, id hendrerit est ultricies non. Donec varius quam et vestibulum malesuada. Fusce in velit sapien.......</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="card-text"><strong>Votes:</strong> 100</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p class="card-text"><strong>End Date:</strong> @DateTime.Now</p>
+                        <p class="card-text"><strong>Status:</strong> Voting </p>
+                    </div>
+                </div>
+                <a href="" class="btn btn-primary">See More...</a>
+            </div>
+        </div>
+        <div class="card">
+            @*<img class="card-img-top" src="" alt="@card.Title">*@
+            <div class="card-body">
+                <h1 class="card-title"><strong>Proposal 3</strong></h1>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dapibus malesuada quam, id hendrerit est ultricies non. Donec varius quam et vestibulum malesuada. Fusce in velit sapien.......</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="card-text"><strong>Votes:</strong> 100</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p class="card-text"><strong>End Date:</strong> @DateTime.Now</p>
+                        <p class="card-text"><strong>Status:</strong> Implementation </p>
+                    </div>
+                </div>
+                <a href="" class="btn btn-primary">See More...</a>
+            </div>
+        </div>
+</div>
+@functions {
+    public string Truncate(string input, int length)
+    {
+        if (input.Length <= length)
+            return input;
+        else
+            return input.Substring(0, length) + " ...";
+    }
+}

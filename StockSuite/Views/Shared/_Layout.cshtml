@@ -231,7 +231,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a  asp-controller="UserDetails" asp-action="Details" asp-route-id="3"  class="nav-link">
+                <a  asp-controller="Home" asp-action="Dashboard" asp-route-id="3"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Reports</p>
                 </a>
@@ -240,7 +240,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a  asp-controller="UserDetails" asp-action="Details" asp-route-id="3"  class="nav-link">
+                <a  asp-controller="Home" asp-action="Proposals" asp-route-id="3"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proposals</p>
                 </a>
@@ -362,7 +362,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                       @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
@@ -370,7 +370,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="UserDetails" asp-action="Index">Details</a>
-                        </li>
+                        </li>*@
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

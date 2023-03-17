@@ -73,7 +73,14 @@ namespace StockSuite.Controllers
 
             return View(user);
         }
-
+        public async Task<IActionResult> Dashboard()
+        {
+            return View();
+        }
+        public async Task<IActionResult> Proposals()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
