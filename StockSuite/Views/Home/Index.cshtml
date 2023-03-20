@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    //StockSuite.Models.UserDetails user = (StockSuite.Models.UserDetails)ViewBag.User;
+    List<StockSuite.Models.Transaction> trans = (List<StockSuite.Models.Transaction>)ViewBag.Transactions;
 }
  <link rel="stylesheet" href="~/lib/admin-lte/css/adminlte.css" />
 
@@ -106,20 +106,20 @@
                   </thead>
                   <tbody>
 
-                           @* @if (user.Transactions.Count > 0)
+                         @if (trans.Count > 0)
                             {
                                 
-                                foreach (var item in user.Transactions)
+                                foreach (var item in trans)
                                 {
                                     <tr>
                                         <td>
                                             @Html.Display(item.CreatedDate.ToString())
                                         </td>
                                         <td>
-                                            @Html.Display(item.Type.ToString())
+                                            @Html.Display(item.Type)
                                         </td>
                                         <td>
-                                            @Html.Display(item.Reference.ToString())
+                                            @Html.Display(item.Reference)
                                         </td>
                                         <td>
                                             @Html.Display(item.Amount.ToString())
@@ -132,7 +132,7 @@
                                         </td>
                                     </tr>
                                 }
-                            }*@
+                            }
                         </tbody>
                    @* <tr>
                       <td>183</td>

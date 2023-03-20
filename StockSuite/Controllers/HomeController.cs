@@ -49,6 +49,7 @@ namespace StockSuite.Controllers
             ViewData["Savings"] = Savings;
             ViewData["Loan"] = loan;
             ViewData["Quick"] = 1000 - loan;
+            ViewBag.Transactions = trans;
             //APIUser user = new APIUser();
             //user.MakeUser();
             //UUID newUUID = new UUID();
