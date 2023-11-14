@@ -25,7 +25,7 @@ namespace StockSuite.Controllers
         public IActionResult Index()
         {
             var user = _context.UserDetails.Include(a => a.Transactions.ToList()).AsQueryable(); 
-            var trans = _context.Transactions.ToList();
+            var trans = _context.Transactions.OrderByDescending(a => a.CreatedDate).ToList();
             float subs = 0;
             float Savings = 0;
             float loan = 0;

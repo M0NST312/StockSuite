@@ -71,7 +71,7 @@
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="#" class="small-box-footer">Apply<i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -91,7 +91,7 @@
                       </button>
                     </div>
                   </div>
-                </div>
+                </div>  
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0" style="height: 300px;">
@@ -108,21 +108,25 @@
 
                          @if (trans.Count > 0)
                             {
-                                
-                                foreach (var item in trans)
+
+                                    foreach (StockSuite.Models.Transaction item in ViewBag.Transactions)
                                 {
                                     <tr>
                                         <td>
-                                            @Html.Display(item.CreatedDate.ToString())
+                                               @item.CreatedDate
+                                            @* @Html.Display(item.CreatedDate.ToString()) *@
                                         </td>
                                         <td>
-                                            @Html.Display(item.Type)
+                                                @item.Type
+                                           @*  @Html.Display(item.Type) *@
                                         </td>
                                         <td>
-                                            @Html.Display(item.Reference)
+                                            @item.Reference
+                                            @* @Html.Display(item.Reference) *@
                                         </td>
                                         <td>
-                                            @Html.Display(item.Amount.ToString())
+                                                @item.Amount.ToString()
+                                            @* @Html.Display(item.Amount.ToString()) *@
                                         </td>
 
                                         <td>
